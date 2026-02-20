@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div className="pt-28">
       <section className="border-b border-gray-200 bg-hero py-10 md:py-14">
-        <div className="container-custom max-w-4xl">
+        <div className="container-custom max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -19,7 +19,7 @@ const About = () => {
         </div>
       </section>
       <div className="section-padding">
-      <div className="container-custom max-w-4xl">
+      <div className="container-custom max-w-6xl">
         {/* Story Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

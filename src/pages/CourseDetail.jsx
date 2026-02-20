@@ -80,7 +80,7 @@ const CourseDetail = () => {
 
   return (
     <div className="section-padding">
-      <div className="container-custom max-w-4xl">
+      <div className="container-custom max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Course Info */}
           <div className="lg:col-span-2">

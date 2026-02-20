@@ -22,7 +22,7 @@ const PaymentSuccess = () => {
 
   return (
     <div className="pt-28 section-padding">
-      <div className="container-custom max-w-2xl">
+      <div className="container-custom max-w-4xl">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

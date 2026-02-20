@@ -93,7 +93,10 @@ const Home = () => {
             className="text-center mb-10"
           >
             <p className="text-primary-600 font-medium text-sm uppercase tracking-wider mb-2">Our specialty</p>
-            <h2 className="text-4xl font-bold mb-4">Custom Dress Sewing</h2>
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-4">
+              <span className="text-5xl md:text-6xl">✂️</span>
+              <h2 className="text-4xl font-bold">Custom Dress Sewing</h2>
+            </div>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Your dream dress, made to your measurements. We specialize in Nigerian attires, bridal wear, evening gowns, and all fashion styles.
             </p>
@@ -102,14 +105,13 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
+            className="max-w-6xl mx-auto"
           >
-            <div className="card p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
-              <div className="flex-shrink-0 text-5xl md:text-6xl">✂️</div>
-              <div className="flex-grow">
-                <p className="text-gray-700 mb-4">
-                  From Ankara sets and Aso Ebi to bridal gowns and evening wear — custom measurements, fabric guidance, and professional finishing. Starting from ₦35,000.
-                </p>
+            <div className="card p-6 md:p-8">
+              <p className="text-gray-700 mb-4">
+                From Ankara sets and Aso Ebi to bridal gowns and evening wear — custom measurements, fabric guidance, and professional finishing. Starting from ₦35,000.
+              </p>
+              <div className="flex justify-center">
                 <Link to="/services/custom-sewing" className="btn-primary inline-flex">
                   Book custom sewing
                 </Link>

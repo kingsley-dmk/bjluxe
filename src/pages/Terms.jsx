@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const Terms = () => {
   return (
     <div className="pt-28 section-padding">
-      <div className="container-custom max-w-4xl">
+      <div className="container-custom max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

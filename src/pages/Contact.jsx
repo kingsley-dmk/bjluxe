@@ -45,7 +45,7 @@ const Contact = () => {
   return (
     <div className="pt-28">
       <section className="border-b border-gray-200 bg-hero py-10 md:py-14">
-        <div className="container-custom max-w-4xl">
+        <div className="container-custom max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ const Contact = () => {
         </div>
       </section>
       <div className="section-padding">
-      <div className="container-custom max-w-4xl">
+      <div className="container-custom max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <motion.div

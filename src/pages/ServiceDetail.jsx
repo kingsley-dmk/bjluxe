@@ -65,7 +65,7 @@ const ServiceDetail = () => {
 
   return (
     <div className="section-padding">
-      <div className="container-custom max-w-4xl">
+      <div className="container-custom max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Service Info */}
           <div className="lg:col-span-2">

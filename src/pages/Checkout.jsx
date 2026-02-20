@@ -86,7 +86,7 @@ const Checkout = () => {
 
   return (
     <div className="pt-28 section-padding">
-      <div className="container-custom max-w-4xl">
+      <div className="container-custom max-w-6xl">
         <h1 className="text-4xl font-bold mb-8">Checkout - Complete Your Order</h1>
 
         <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-8">
