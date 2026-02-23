@@ -94,14 +94,14 @@ const CourseDetail = () => {
 
             <h1 className="text-4xl font-bold mb-4">{course.title}</h1>
             <div className="flex items-center gap-4 mb-6">
-              <span className="bg-primary-100 text-primary-600 px-3 py-1 rounded-full text-sm font-medium">
+              <span className="bg-primary-100 text-primary-600 px-3 py-1 rounded-full text-base font-medium">
                 {course.category}
               </span>
               <span className="text-gray-600">{course.duration}</span>
               <span className="text-gray-600">{course.format}</span>
             </div>
 
-            <p className="text-lg text-gray-600 mb-8">{course.description}</p>
+            <p className="text-xl text-gray-600 mb-8">{course.description}</p>
 
             {/* What You'll Learn */}
             {course.whatYoullLearn && (

@@ -6,7 +6,7 @@ export const services = [
     name: 'Custom Dress Sewing',
     category: 'Customization & Alteration',
     description: 'Get your dream dress custom-made to your exact measurements. We specialize in Nigerian attires (Ankara sets, Aso Ebi, native styles), bridal wear, evening gowns, and all fashion styles.',
-    icon: '✂️',
+    icon: 'scissors',
     features: [
       'Nigerian attires (Ankara, Aso Ebi, native styles)',
       'Bridal wedding gowns (traditional & modern)',
@@ -24,7 +24,7 @@ export const services = [
     name: 'Online Alteration Service',
     category: 'Customization & Alteration',
     description: 'Professional alterations for dresses you already own. Send measurements and get perfect fit.',
-    icon: '📏',
+    icon: 'ruler',
     features: [
       'Measurement guide',
       'Photo consultation',
@@ -39,7 +39,7 @@ export const services = [
     name: 'Bridal Consultation',
     category: 'Customization & Alteration',
     description: 'One-on-one consultation to plan your bridal look — style, fabric, timeline, and how we bring your dream gown to life.',
-    icon: '💒',
+    icon: 'bridal',
     features: [
       'Style and silhouette discussion',
       'Fabric and lace options',
@@ -54,7 +54,7 @@ export const services = [
     name: 'Express / Rush Tailoring',
     category: 'Customization & Alteration',
     description: 'Need it fast? We offer rush alterations and quick-turn custom pieces for urgent events and deadlines.',
-    icon: '⚡',
+    icon: 'express',
     features: [
       'Rush alteration service',
       'Quick-turn custom pieces',
@@ -69,7 +69,7 @@ export const services = [
     name: 'Design Consultation',
     category: 'Fashion & Styling Services',
     description: 'Sit down with us (in person or online) to design your dress before we sew — style, silhouette, and details.',
-    icon: '🎨',
+    icon: 'design',
     features: [
       'Style and silhouette ideas',
       'Fabric and colour guidance',
@@ -84,7 +84,7 @@ export const services = [
     name: 'Virtual Styling / Personal Shopper',
     category: 'Fashion & Styling Services',
     description: 'One-on-one online consultations for outfit recommendations based on your body type, event, or budget.',
-    icon: '👗',
+    icon: 'styling',
     features: [
       'Zoom/WhatsApp consultations',
       'Body type analysis',

@@ -70,7 +70,7 @@ export const courses = [
       'Customer Service',
       'Scaling Your Business',
     ],
-    image: 'https://images.unsplash.com/photo-1518492102993-45ef6abf3b47?w=800',
+    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800',
     featured: true,
     whatYoullLearn: [
       'How to start a fashion business',

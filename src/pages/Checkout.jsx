@@ -198,7 +198,7 @@ const Checkout = () => {
               
               <div className="space-y-4 mb-6">
                 {cart.map((item) => (
-                  <div key={item.id} className="flex justify-between text-sm">
+                  <div key={item.id} className="flex justify-between text-base">
                     <span>{item.name} x{item.quantity}</span>
                     <span>{config.currencySymbol}{(item.price * item.quantity).toLocaleString()}</span>
                   </div>

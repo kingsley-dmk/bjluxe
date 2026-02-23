@@ -52,7 +52,7 @@ const Contact = () => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Contact Us</h1>
-          <p className="text-gray-200 text-lg">We'd love to hear from you. Get in touch for all fashion inquiries!</p>
+          <p className="text-gray-200 text-xl">We'd love to hear from you. Get in touch for all fashion inquiries!</p>
           </motion.div>
         </div>
       </section>
@@ -67,7 +67,7 @@ const Contact = () => {
           >
             <div>
               <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-600 text-lg mb-8">
                 Have questions? Send us a message using the form, or use the WhatsApp button on any page for instant chat.
               </p>
             </div>
@@ -96,7 +96,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Location</h3>
-                  <p className="text-gray-600">Lagos, Nigeria</p>
+                  <p className="text-gray-600 text-lg">Lagos, Nigeria</p>
                 </div>
               </div>
             </div>

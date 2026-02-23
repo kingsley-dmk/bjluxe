@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import logo from '../assets/logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,7 +10,7 @@ const Footer = () => {
     { name: 'Shop', path: '/shop' },
     { name: 'Services', path: '/services' },
     { name: 'Rentals', path: '/shop/rentals' },
-    { name: 'Trainings', path: '/services/training' },
+    { name: 'Training', path: '/services/training' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -46,9 +45,52 @@ const Footer = () => {
     },
   ];
 
+  const activeSocialLinks = socialLinks.filter((s) => s.url && s.url !== '#');
+
+  const trustItems = [
+    {
+      label: 'Fast delivery',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24">
+          <circle cx="6" cy="17" r="3" />
+          <circle cx="18" cy="17" r="3" />
+          <path d="M6 14V9l5 3 4-5 3 2" />
+        </svg>
+      ),
+    },
+    {
+      label: 'Quality guarantee',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+        </svg>
+      ),
+    },
+    {
+      label: 'Expert support',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container-custom">
+        {/* Trust / Benefits strip */}
+        <div className="border-b border-gray-800 py-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+            {trustItems.map((item) => (
+              <div key={item.label} className="flex flex-col sm:flex-row items-center justify-center gap-3 text-gray-300">
+                <span className="text-primary-400 flex-shrink-0">{item.icon}</span>
+                <span className="text-sm font-medium uppercase tracking-wider">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Main Footer Content */}
         <div className="py-12 md:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -60,31 +102,30 @@ const Footer = () => {
               transition={{ delay: 0.1 }}
               className="lg:col-span-1"
             >
-              <Link to="/" className="inline-block mb-4">
-                <img
-                  src={logo}
-                  alt="BeautyJay Luxe"
-                  className="h-12 md:h-16 w-auto object-contain"
-                  style={{ imageRendering: 'high-quality', maxWidth: 'none' }}
-                />
+              <Link to="/" className="inline-block mb-4 text-xl md:text-2xl font-bold text-white hover:text-primary-300 transition-colors">
+                BeautyJay Luxe
               </Link>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
+              <p className="text-gray-400 text-base leading-relaxed mb-6">
                 Premium fashion store and training school. Creating elegance, one stitch at a time.
               </p>
-              <div className="flex space-x-4">
-                {socialLinks.map((social) => (
-                  <motion.a
-                    key={social.name}
-                    href={social.url}
-                    className="text-gray-400 hover:text-primary-400 transition-colors"
-                    aria-label={social.name}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    {social.icon}
-                  </motion.a>
-                ))}
-              </div>
+              {activeSocialLinks.length > 0 && (
+                <div className="flex space-x-4">
+                  {activeSocialLinks.map((social) => (
+                    <motion.a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-primary-400 transition-colors"
+                      aria-label={social.name}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      {social.icon}
+                    </motion.a>
+                  ))}
+                </div>
+              )}
             </motion.div>
 
             {/* Quick Links */}
@@ -94,13 +135,13 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <h4 className="text-white font-semibold mb-4 text-base">Quick Links</h4>
+              <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider text-gray-300">Quick Links</h4>
               <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.path}>
                     <Link
                       to={link.path}
-                      className="text-gray-400 hover:text-white transition-colors text-sm"
+                      className="text-gray-400 hover:text-white transition-colors text-base"
                     >
                       {link.name}
                     </Link>
@@ -116,12 +157,12 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <h4 className="text-white font-semibold mb-4 text-base">Contact</h4>
+              <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider text-gray-300">Contact</h4>
               <ul className="space-y-3">
                 <li>
                   <a
                     href="mailto:info@beautyjayluxe.com"
-                    className="text-gray-400 hover:text-white transition-colors text-sm flex items-start gap-2"
+                    className="text-gray-400 hover:text-white transition-colors text-base flex items-start gap-2"
                   >
                     <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -130,7 +171,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <div className="text-gray-400 text-sm flex items-start gap-2">
+                  <div className="text-gray-400 text-base flex items-start gap-2">
                     <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -148,25 +189,25 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <h4 className="text-white font-semibold mb-4 text-base">Services</h4>
+              <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider text-gray-300">Services</h4>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/services/custom-sewing" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link to="/services/custom-sewing" className="text-gray-400 hover:text-white transition-colors text-base">
                     Custom Sewing
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link to="/services" className="text-gray-400 hover:text-white transition-colors text-base">
                     All Services
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services/training" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link to="/services/training" className="text-gray-400 hover:text-white transition-colors text-base">
                     Training Courses
                   </Link>
                 </li>
                 <li>
-                  <Link to="/shop/rentals" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link to="/shop/rentals" className="text-gray-400 hover:text-white transition-colors text-base">
                     Dress Rentals
                   </Link>
                 </li>
@@ -178,19 +219,19 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm text-center md:text-left">
+            <p className="text-gray-400 text-base text-center md:text-left">
               © {currentYear} BeautyJay Luxe. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               <Link
                 to="/privacy"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
+                className="text-gray-400 hover:text-white text-base transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
                 to="/terms"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
+                className="text-gray-400 hover:text-white text-base transition-colors"
               >
                 Terms & Conditions
               </Link>

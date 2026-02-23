@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { getServiceById } from '../data/services';
 import { sendEmail } from '../utils/email';
-import { openWhatsAppService } from '../utils/whatsapp';
-import WhatsAppButton from '../components/WhatsAppButton';
+import { openWhatsApp, openWhatsAppService } from '../utils/whatsapp';
+import ServiceIcon from '../components/ServiceIcon';
 
 const ServiceDetail = () => {
   const { id } = useParams();
@@ -74,14 +74,16 @@ const ServiceDetail = () => {
               animate={{ opacity: 1, y: 0 }}
               className="mb-8"
             >
-              <div className="text-6xl mb-6">{service.icon}</div>
+              <div className="mb-6">
+                <ServiceIcon name={service.icon} className="w-16 h-16" />
+              </div>
               <h1 className="text-4xl font-bold mb-4">{service.name}</h1>
               <div className="mb-4">
-                <span className="bg-primary-100 text-primary-600 px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-primary-100 text-primary-600 px-3 py-1 rounded-full text-base font-medium">
                   {service.category}
                 </span>
               </div>
-              <p className="text-lg text-gray-600 mb-6">{service.description}</p>
+              <p className="text-xl text-gray-600 mb-6">{service.description}</p>
             </motion.div>
 
             {/* Features */}
@@ -113,7 +115,7 @@ const ServiceDetail = () => {
             >
               <h2 className="text-2xl font-bold mb-2">Pricing</h2>
               <p className="text-3xl font-bold text-primary-600">{service.pricing}</p>
-              <p className="text-gray-600 mt-2">Contact us for a custom quote based on your specific needs</p>
+              <p className="text-gray-600 text-lg mt-2">Contact us for a custom quote based on your specific needs</p>
             </motion.div>
           </div>
 
@@ -191,12 +193,15 @@ const ServiceDetail = () => {
                 </button>
               </form>
 
-              <div className="mt-6 pt-6 border-t">
-                <p className="text-sm text-gray-600 mb-4 text-center">Or contact us directly</p>
-                <WhatsAppButton 
-                  message={`Hi, I'm interested in ${service.name}`}
-                  className="w-full justify-center"
-                />
+              <div className="mt-6 pt-6 border-t text-center">
+                <p className="text-base text-gray-600 mb-2">Prefer to chat?</p>
+                <button
+                  type="button"
+                  onClick={() => openWhatsApp(`Hi, I'm interested in ${service.name}`)}
+                  className="text-primary-600 font-medium hover:text-primary-700 hover:underline"
+                >
+                  Message us on WhatsApp
+                </button>
               </div>
             </motion.div>
           </div>

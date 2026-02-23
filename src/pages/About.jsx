@@ -12,9 +12,9 @@ const About = () => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">About BeautyJay Luxe</h1>
-          <p className="text-xl text-gray-200">
-            Where fashion meets excellence, and style becomes art
-          </p>
+            <p className="text-xl text-gray-200">
+              Fashion house for custom dresses, Nigerian attires and premium training.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -28,7 +28,7 @@ const About = () => {
           className="mb-16"
         >
           <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-          <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
+          <div className="prose prose-lg max-w-none text-gray-600 text-lg space-y-4">
             <p>
               BeautyJay Luxe was born from a passion for creating timeless elegance and empowering individuals
               through fashion. Founded with a vision to blend African fashion excellence with modern digital convenience,
@@ -51,7 +51,7 @@ const About = () => {
             className="card p-8"
           >
             <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-lg">
               To provide premium fashion products and services that empower individuals to express their unique style
               while maintaining the highest standards of quality and craftsmanship.
             </p>
@@ -64,7 +64,7 @@ const About = () => {
             className="card p-8"
           >
             <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-lg">
               To become the leading fashion brand in Africa, known for excellence, innovation, and empowering
               the next generation of fashion designers and stylists.
             </p>
@@ -94,7 +94,7 @@ const About = () => {
                 className="card p-6 text-center"
               >
                 <h4 className="text-xl font-semibold mb-2">{value.title}</h4>
-                <p className="text-gray-600">{value.description}</p>
+                <p className="text-gray-600 text-lg">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -109,7 +109,7 @@ const About = () => {
         >
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Fashion Journey?</h2>
           <p className="text-xl mb-8">Get in touch with us today</p>
-          <WhatsAppButton />
+          <WhatsAppButton label="Get in touch" />
         </motion.div>
       </div>
       </div>

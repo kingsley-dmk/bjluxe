@@ -82,7 +82,7 @@ const Cart = () => {
                       />
                       <div className="flex-1">
                         <h3 className="font-medium">{item.name}</h3>
-                        <p className="text-sm text-gray-500">{item.category}</p>
+                        <p className="text-base text-gray-500">{item.category}</p>
                         <div className="flex items-center gap-2 mt-2">
                           <button
                             onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)}
@@ -103,7 +103,7 @@ const Cart = () => {
                         <p className="font-semibold">{config.currencySymbol}{item.price.toLocaleString()}</p>
                         <button
                           onClick={() => removeFromCart(item.id)}
-                          className="text-red-500 hover:text-red-700 text-sm mt-2"
+                          className="text-red-500 hover:text-red-700 text-base mt-2"
                         >
                           Remove
                         </button>
@@ -131,7 +131,7 @@ const Cart = () => {
                   </Link>
                   <button
                     onClick={clearCart}
-                    className="text-gray-500 hover:text-gray-700 text-sm w-full"
+                    className="text-gray-500 hover:text-gray-700 text-base w-full"
                   >
                     Clear Cart
                   </button>

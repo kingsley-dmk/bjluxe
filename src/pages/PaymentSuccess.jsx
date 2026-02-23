@@ -40,7 +40,7 @@ const PaymentSuccess = () => {
           </motion.div>
 
           <h1 className="text-4xl font-bold mb-4">Payment Successful!</h1>
-          <p className="text-gray-600 text-lg mb-8">
+          <p className="text-gray-600 text-xl mb-8">
             Thank you for your order. We've received your payment and will process your order shortly.
           </p>
 

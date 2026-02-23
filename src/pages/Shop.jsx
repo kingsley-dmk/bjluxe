@@ -19,13 +19,13 @@ const Shop = () => {
             transition={{ duration: 0.4 }}
             className="text-center max-w-2xl mx-auto"
           >
-            <p className="text-primary-200 font-medium text-sm uppercase tracking-wider mb-2">
+            <p className="text-primary-200 font-medium text-base uppercase tracking-wider mb-2">
               Collection
             </p>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
               Shop Fashion
             </h1>
-            <p className="text-gray-200 text-base md:text-lg">
+            <p className="text-gray-200 text-lg md:text-xl">
               Discover our premium collection — Nigerian attires, bridal wear, evening gowns, and elegant ready-to-wear pieces.
             </p>
           </motion.div>
@@ -37,7 +37,7 @@ const Shop = () => {
         <div className="container-custom">
           {/* Results count */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-            <p className="text-sm text-gray-600">
+            <p className="text-base text-gray-600">
               {filteredProducts.length === 0 ? (
                 'No products found'
               ) : (
@@ -79,7 +79,7 @@ const Shop = () => {
                 </svg>
               </div>
               <h2 className="text-xl font-semibold text-gray-900 mb-2">No products found</h2>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 text-base">
                 Check back soon for new arrivals.
               </p>
             </motion.div>

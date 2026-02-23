@@ -14,7 +14,7 @@ const Training = () => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Fashion Training Courses</h1>
-            <p className="text-gray-200 text-lg">Learn from industry experts and master the art of fashion - including Nigerian attires, bridal wear, and all fashion styles</p>
+            <p className="text-gray-200 text-xl">Learn from industry experts and master the art of fashion - including Nigerian attires, bridal wear, and all fashion styles</p>
           </motion.div>
         </div>
       </section>

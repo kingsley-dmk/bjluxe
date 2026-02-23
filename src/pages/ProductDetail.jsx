@@ -76,12 +76,12 @@ const ProductDetail = () => {
             </p>
             
             <div className="mb-6">
-              <span className="inline-block bg-primary-100 text-primary-600 px-3 py-1 rounded-full text-sm mb-4 font-medium">
+              <span className="inline-block bg-primary-100 text-primary-600 px-3 py-1 rounded-full text-base mb-4 font-medium">
                 {product.category}
               </span>
             </div>
 
-            <p className="text-gray-600 mb-8">{product.description}</p>
+            <p className="text-gray-600 text-lg mb-8">{product.description}</p>
 
             {/* Size Selection */}
             {product.sizes.length > 0 && (
@@ -128,7 +128,7 @@ const ProductDetail = () => {
             {/* Materials */}
             {product.materials && (
               <div className="mb-6">
-                <p className="text-sm text-gray-600">
+                <p className="text-base text-gray-600">
                   <strong>Materials:</strong> {product.materials.join(', ')}
                 </p>
               </div>
@@ -156,7 +156,7 @@ const ProductDetail = () => {
             </div>
 
             {/* Stock Status */}
-            <p className={`text-sm ${product.inStock ? 'text-green-600' : 'text-red-600'}`}>
+            <p className={`text-base ${product.inStock ? 'text-green-600' : 'text-red-600'}`}>
               {product.inStock ? '✓ In Stock' : '✗ Out of Stock'}
             </p>
           </div>

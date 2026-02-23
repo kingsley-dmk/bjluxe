@@ -33,7 +33,7 @@ const Lookbook = () => {
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Fashion Lookbook</h1>
-            <p className="text-gray-200 text-lg">Explore our portfolio of stunning fashion creations including Nigerian attires, bridal wear, and elegant designs</p>
+            <p className="text-gray-200 text-xl">Explore our portfolio of stunning fashion creations including Nigerian attires, bridal wear, and elegant designs</p>
           </motion.div>
         </div>
       </section>

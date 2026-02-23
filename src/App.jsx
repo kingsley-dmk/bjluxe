@@ -3,7 +3,6 @@ import { CartProvider } from './contexts/CartContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Cart from './components/Cart';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
 import ScrollToTop from './components/ScrollToTop';
 import ShopLayout from './components/ShopLayout';
 import ServicesLayout from './components/ServicesLayout';
@@ -55,7 +54,6 @@ function App() {
           </main>
           <Footer />
           <Cart />
-          <FloatingWhatsApp />
         </div>
       </Router>
     </CartProvider>
