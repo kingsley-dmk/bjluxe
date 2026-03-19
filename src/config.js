@@ -3,7 +3,7 @@
 export const config = {
   siteName: 'BeautyJay Luxe',
   siteUrl: 'https://www.beautyjayluxe.com',
-  whatsappNumber: '234XXXXXXXXXX', // Replace with actual WhatsApp number
+  whatsappNumber: '2349163336036',
   whatsappMessage: 'Hi, I have a question about BeautyJay Luxe',
   paystackPublicKey: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || '',
   emailService: {

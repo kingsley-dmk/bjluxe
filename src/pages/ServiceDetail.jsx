@@ -65,7 +65,7 @@ const ServiceDetail = () => {
 
   return (
     <div className="section-padding">
-      <div className="container-custom max-w-7xl">
+      <div className="container-custom max-w-8xl">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Service Info */}
           <div className="lg:col-span-2">
@@ -84,6 +84,19 @@ const ServiceDetail = () => {
                 </span>
               </div>
               <p className="text-xl text-gray-600 mb-6">{service.description}</p>
+
+              {service.id === 'custom-sewing' && (
+                <div className="mb-6 p-4 rounded-xl bg-primary-50 border border-primary-100">
+                  <h2 className="text-lg font-semibold text-primary-800 mb-1">
+                    Already have a style in mind?
+                  </h2>
+                  <p className="text-base text-primary-900">
+                    This page is perfect when you&apos;ve saved a dress style from Instagram, Pinterest or your phone
+                    and want BeautyJay Luxe to sew it for you – even if it&apos;s not in our homepage gallery.
+                    Tell us about the style, attach reference pictures when sending your message, and we&apos;ll take it from there.
+                  </p>
+                </div>
+              )}
             </motion.div>
 
             {/* Features */}

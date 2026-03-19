@@ -21,20 +21,17 @@ const Header = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Sewing', path: '/services/custom-sewing' },
-    { name: 'Shop', path: '/shop' },
     { name: 'Services', path: '/services' },
-    { name: 'Rentals', path: '/shop/rentals' },
     { name: 'Training', path: '/services/training' },
-    { name: 'About', path: '/about' },
+    { name: 'About Us', path: '/about' },
   ];
 
-  const isShopActive = location.pathname.startsWith('/shop') && location.pathname !== '/shop/rentals';
+  const isShopActive = location.pathname.startsWith('/shop');
   const isServicesActive =
     location.pathname.startsWith('/services') && 
     location.pathname !== '/services/custom-sewing' && 
     location.pathname !== '/services/training';
   const isSewingActive = location.pathname === '/services/custom-sewing';
-  const isRentalsActive = location.pathname === '/shop/rentals';
   const isTrainingsActive = location.pathname.startsWith('/services/training');
 
   return (
@@ -44,14 +41,19 @@ const Header = () => {
       }`}
     >
       <nav className="relative">
-        <div className="flex items-center justify-between min-h-20 py-2">
-          <Link to="/" className="flex items-center pl-4 sm:pl-6 lg:pl-8">
+          <div className="flex items-center justify-between min-h-20 py-2">
+          <Link to="/" className="flex items-center pl-4 sm:pl-6 lg:pl-8 ml-7 sm:ml-9 lg:ml-11">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <img src={logo} alt="BeautyJay Luxe" className="h-[72px] sm:h-20 md:h-24 lg:h-28 w-auto object-contain" style={{ maxHeight: 'none' }} />
+              <img
+                src={logo}
+                alt="BeautyJay Luxe"
+                className="h-[82px] sm:h-24 md:h-28 lg:h-32 w-auto object-contain"
+                style={{ maxHeight: 'none' }}
+              />
             </motion.div>
           </Link>
 
-          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 flex-1 justify-center">
+          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 flex-1 justify-end">
               {navLinks.map((link) => {
                 const isActive =
                   link.path === '/shop'
@@ -60,11 +62,9 @@ const Header = () => {
                       ? isServicesActive
                       : link.path === '/services/custom-sewing'
                         ? isSewingActive
-                        : link.path === '/shop/rentals'
-                          ? isRentalsActive
-                          : link.path === '/services/training'
-                            ? isTrainingsActive
-                            : location.pathname === link.path;
+                        : link.path === '/services/training'
+                          ? isTrainingsActive
+                          : location.pathname === link.path;
                 return (
                   <Link
                     key={link.path}
@@ -115,7 +115,7 @@ const Header = () => {
         </div>
 
         <AnimatePresence>
-          {isMenuOpen && (
+                {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
@@ -131,11 +131,9 @@ const Header = () => {
                         ? isServicesActive
                         : link.path === '/services/custom-sewing'
                           ? isSewingActive
-                          : link.path === '/shop/rentals'
-                            ? isRentalsActive
-                            : link.path === '/services/training'
-                              ? isTrainingsActive
-                              : location.pathname === link.path;
+                          : link.path === '/services/training'
+                            ? isTrainingsActive
+                            : location.pathname === link.path;
                   return (
                     <Link
                       key={link.path}

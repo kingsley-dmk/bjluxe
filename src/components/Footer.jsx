@@ -7,10 +7,6 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Home', path: '/' },
     { name: 'Sewing', path: '/services/custom-sewing' },
-    { name: 'Shop', path: '/shop' },
-    { name: 'Services', path: '/services' },
-    { name: 'Rentals', path: '/shop/rentals' },
-    { name: 'Training', path: '/services/training' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -204,11 +200,6 @@ const Footer = () => {
                 <li>
                   <Link to="/services/training" className="text-gray-400 hover:text-white transition-colors text-base">
                     Training Courses
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/shop/rentals" className="text-gray-400 hover:text-white transition-colors text-base">
-                    Dress Rentals
                   </Link>
                 </li>
               </ul>

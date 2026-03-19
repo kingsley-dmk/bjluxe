@@ -18,7 +18,6 @@ import Training from './pages/Training';
 import CourseDetail from './pages/CourseDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Rentals from './pages/Rentals';
 import ServiceDetail from './pages/ServiceDetail';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
@@ -35,7 +34,6 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/shop" element={<ShopLayout />}>
                 <Route index element={<Shop />} />
-                <Route path="rentals" element={<Rentals />} />
                 <Route path=":id" element={<ProductDetail />} />
               </Route>
               <Route path="/services" element={<ServicesLayout />}>

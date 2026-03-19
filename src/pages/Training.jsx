@@ -28,8 +28,8 @@ const Training = () => {
         </div>
 
         {/* Courses Grid */}
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {courses.map((course, index) => (
               <motion.div
                 key={course.id}

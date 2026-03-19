@@ -3,7 +3,9 @@ import { services } from '../data/services';
 import ServiceCard from '../components/ServiceCard';
 
 const Services = () => {
-  const displayServices = [...services].sort((a, b) => (a.id === 'custom-sewing' ? -1 : b.id === 'custom-sewing' ? 1 : 0));
+  const displayServices = [...services].sort((a, b) =>
+    a.id === 'custom-sewing' ? -1 : b.id === 'custom-sewing' ? 1 : 0
+  );
 
   return (
     <div className="pt-28">
@@ -14,12 +16,12 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Our Fashion Services</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Our Services</h1>
             <p className="text-gray-200 text-xl leading-relaxed">
-              From bespoke custom dresses to styling, alterations and rentals — BeautyJay Luxe is your one-stop fashion partner.
+              Choose the option that fits your needs. Sew a saved style, get style guidance, or sew your wedding gown and bridal wears.
             </p>
             <p className="text-gray-300 text-base mt-4">
-              Browse below and book straight from each service.
+              Start with <span className="font-semibold text-white">Sew My Own Style</span> if you already have a design you want to sew.
             </p>
           </motion.div>
         </div>

@@ -105,11 +105,13 @@ const About = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center bg-primary-600 text-white p-12 rounded-lg"
+          className="text-center bg-white border border-gray-200 p-12 rounded-lg"
         >
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Fashion Journey?</h2>
-          <p className="text-xl mb-8">Get in touch with us today</p>
-          <WhatsAppButton label="Get in touch" />
+          <p className="text-xl text-gray-600 mb-8">Get in touch with us today</p>
+          <div className="flex justify-center">
+            <WhatsAppButton label="Get in touch" variant="secondary" />
+          </div>
         </motion.div>
       </div>
       </div>

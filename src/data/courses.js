@@ -1,4 +1,7 @@
 // Sample courses data for BeautyJay Luxe
+import course1Img from '../assets/course1.jpg';
+import course2Img from '../assets/course2.jpg';
+import course3Img from '../assets/course3.jpg';
 
 export const courses = [
   {
@@ -17,7 +20,7 @@ export const courses = [
       'Creating Your First Project',
       'Finishing Techniques',
     ],
-    image: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=800',
+    image: course1Img,
     featured: true,
     whatYoullLearn: [
       'How to operate a sewing machine',
@@ -44,7 +47,7 @@ export const courses = [
       'Grading Patterns',
       'Advanced Techniques',
     ],
-    image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800',
+    image: course2Img,
     featured: true,
     whatYoullLearn: [
       'Professional pattern drafting',
@@ -55,8 +58,34 @@ export const courses = [
     whoIsThisFor: 'Intermediate sewers ready to create their own patterns',
   },
   {
+    id: '4',
+    title: 'Advanced Tailoring Techniques',
+    description: 'Master professional tailoring techniques for creating high-quality, well-fitted garments.',
+    category: 'Advanced Tailoring',
+    price: 50000,
+    duration: '8 weeks',
+    format: 'In-Person',
+    curriculum: [
+      'Advanced Fitting Techniques',
+      'Tailoring for Different Body Types',
+      'Professional Finishing',
+      'Working with Luxury Fabrics',
+      'Custom Alterations',
+      'Business Tailoring',
+    ],
+    image: course3Img,
+    featured: false,
+    whatYoullLearn: [
+      'Professional tailoring methods',
+      'Perfect fit techniques',
+      'Working with premium fabrics',
+      'Advanced alterations',
+    ],
+    whoIsThisFor: 'Experienced sewers looking to master tailoring',
+  },
+  {
     id: '3',
-    title: 'Fashion Business Basics',
+    title: 'Fashion Business',
     description: 'Learn how to start and run a successful fashion business. From branding to marketing and operations.',
     category: 'Fashion Business',
     price: 35000,
@@ -80,32 +109,6 @@ export const courses = [
       'Customer acquisition',
     ],
     whoIsThisFor: 'Aspiring fashion entrepreneurs',
-  },
-  {
-    id: '4',
-    title: 'Advanced Tailoring Techniques',
-    description: 'Master professional tailoring techniques for creating high-quality, well-fitted garments.',
-    category: 'Advanced Tailoring',
-    price: 50000,
-    duration: '8 weeks',
-    format: 'In-Person',
-    curriculum: [
-      'Advanced Fitting Techniques',
-      'Tailoring for Different Body Types',
-      'Professional Finishing',
-      'Working with Luxury Fabrics',
-      'Custom Alterations',
-      'Business Tailoring',
-    ],
-    image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800',
-    featured: false,
-    whatYoullLearn: [
-      'Professional tailoring methods',
-      'Perfect fit techniques',
-      'Working with premium fabrics',
-      'Advanced alterations',
-    ],
-    whoIsThisFor: 'Experienced sewers looking to master tailoring',
   },
 ];
 

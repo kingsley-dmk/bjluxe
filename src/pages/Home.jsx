@@ -1,14 +1,11 @@
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import heroImage from '../assets/pexels-cottonbro-4427642.jpg';
 import { getFeaturedProducts } from '../data/products';
-import { getFeaturedCourses } from '../data/courses';
-import { services } from '../data/services';
-import ProductCard from '../components/ProductCard';
-import CourseCard from '../components/CourseCard';
-import ServiceCard from '../components/ServiceCard';
+import { galleryImages } from '../data/galleryImages';
 import WhatsAppButton from '../components/WhatsAppButton';
-import { openWhatsAppGeneral } from '../utils/whatsapp';
+import { openWhatsApp } from '../utils/whatsapp';
 
 const ScissorsIcon = ({ className }) => (
   <svg
@@ -37,8 +34,26 @@ const ScissorsIcon = ({ className }) => (
 
 const Home = () => {
   const featuredProducts = getFeaturedProducts();
-  const featuredCourses = getFeaturedCourses();
-  const featuredServices = services.slice(0, 4);
+  const allGalleryImages = galleryImages;
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const PAGE_SIZE = 24;
+  const [page, setPage] = useState(1);
+
+  const totalPages = useMemo(() => {
+    if (!allGalleryImages.length) return 0;
+    return Math.ceil(allGalleryImages.length / PAGE_SIZE);
+  }, [allGalleryImages.length]);
+
+  const pageImages = useMemo(() => {
+    if (!allGalleryImages.length) return [];
+    const start = (page - 1) * PAGE_SIZE;
+    return allGalleryImages.slice(start, start + PAGE_SIZE);
+  }, [allGalleryImages, page]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [allGalleryImages.length]);
 
   const testimonials = [
     {
@@ -83,20 +98,17 @@ const Home = () => {
             className="max-w-xl"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
-              Custom Dresses, Rentals & Fashion Training
+              Luxury Wears, Tailored Just for You
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-8 text-gray-600 leading-relaxed">
-              BeautyJay Luxe crafts Nigerian attires, bridal gowns and occasion wear with couture-level finishing — plus expert training to help you create your own looks.
+              BeautyJay Luxe showcases elegant designs you can shop ready-made or sew to your exact measurements, with simple guidance or manual measurement options.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/services/custom-sewing" className="btn-primary text-base md:text-lg px-8 py-4 text-center">
-                Book a Custom Dress
-              </Link>
-              <Link to="/shop" className="btn-secondary text-base md:text-lg text-center">
-                Shop Ready-to-Wear
-              </Link>
-              <Link to="/services/training" className="btn-secondary text-base md:text-lg text-center">
-                Explore Trainings
+              <a href="#gallery" className="btn-primary text-base md:text-lg px-8 py-4 text-center">
+                View Styles Gallery
+              </a>
+              <Link to="/services/custom-sewing" className="btn-secondary text-base md:text-lg text-center">
+                Sew a Custom Style
               </Link>
             </div>
           </motion.div>
@@ -114,81 +126,7 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* Custom Sewing — Our Specialty */}
-      <section className="section-padding bg-white border-b border-gray-100">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <p className="text-primary-600 font-medium text-base uppercase tracking-wider mb-2">Our specialty</p>
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-4">
-              <ScissorsIcon className="w-12 h-12 md:w-16 md:h-16 text-primary-600" />
-              <h2 className="text-4xl font-bold">Custom Dress Sewing</h2>
-            </div>
-            <p className="text-gray-600 text-xl max-w-2xl mx-auto">
-              Your dream dress, made to your measurements. We specialize in Nigerian attires, bridal wear, evening gowns, and all fashion styles.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-6xl mx-auto"
-          >
-            <div className="card p-6 md:p-8">
-              <p className="text-gray-700 text-lg mb-4">
-                From Ankara sets and Aso Ebi to bridal gowns and evening wear — custom measurements, fabric guidance, and professional finishing. Starting from ₦35,000.
-              </p>
-              <p className="text-center">
-                <Link to="/services/custom-sewing" className="text-primary-600 font-medium hover:text-primary-700 no-underline focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded">
-                  What's included →
-                </Link>
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Other Services */}
-      <section className="section-padding bg-gray-50 border-t border-gray-200">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <p className="text-primary-600 font-medium text-sm uppercase tracking-wider mb-2">What we offer</p>
-            <h2 className="text-4xl font-bold mb-4">More Services</h2>
-            <p className="text-gray-600 text-xl">Styling, alterations, rentals & more</p>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredServices.filter((s) => s.id !== 'custom-sewing').map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <ServiceCard service={service} />
-              </motion.div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-10">
-            <Link to="/services" className="btn-secondary">
-              View All Services
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Products */}
+      {/* How it works */}
       <section className="section-padding bg-white border-t border-gray-200">
         <div className="container-custom">
           <motion.div
@@ -197,68 +135,223 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="text-primary-600 font-medium text-sm uppercase tracking-wider mb-2">Collection</p>
-            <h2 className="text-4xl font-bold mb-4">Featured Products</h2>
-            <p className="text-gray-600 text-xl max-w-2xl mx-auto">Shop our latest collection of fashion products including Nigerian attires, bridal wear, and elegant designs.</p>
+            <p className="text-primary-600 font-medium text-sm uppercase tracking-wider mb-2">Simple process</p>
+            <h2 className="text-4xl font-bold mb-4">How BeautyJay Luxe Works</h2>
+            <p className="text-gray-600 text-xl max-w-2xl mx-auto">
+              Browse styles, choose ready-made or sewing, then send your measurements for a confident fit.
+            </p>
           </motion.div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProducts.map((product, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                number: 1,
+                heading: 'Browse designs',
+                text: 'Scroll through the gallery to see designs and styles.',
+              },
+              {
+                number: 2,
+                heading: 'Ready-made or sew',
+                text: 'Choose ready-made pieces or request sewing of any design you love.',
+              },
+              {
+                number: 3,
+                heading: 'Send measurements',
+                text: 'Send your measurements so we can sew the perfect fit.',
+              },
+            ].map((item, index) => (
               <motion.div
-                key={product.id}
+                key={item.number}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
+                className="card p-6 border border-gray-200 bg-white/80"
               >
-                <ProductCard product={product} />
+                <div className="flex items-start gap-4 mb-3">
+                  <span className="w-12 h-12 bg-primary-50 text-primary-600 rounded-full flex items-center justify-center font-bold text-xl">
+                    {item.number}
+                  </span>
+                  <h3 className="text-xl font-semibold text-gray-900 mt-1">{item.heading}</h3>
+                </div>
+                <p className="text-gray-600 text-base leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
-          </div>
-          
-          <div className="text-center mt-10">
-            <Link to="/shop" className="btn-primary">
-              View All Products
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* Fashion Training */}
-      <section className="section-padding bg-gray-50 border-t border-gray-200">
+      {/* Image Gallery */}
+      <section id="gallery" className="section-padding bg-gray-50 border-t border-gray-200">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="mb-10"
           >
-            <p className="text-primary-600 font-medium text-sm uppercase tracking-wider mb-2">Learn with us</p>
-            <h2 className="text-4xl font-bold mb-4">Fashion Training</h2>
-            <p className="text-gray-600 text-xl max-w-2xl mx-auto">Learn from the best in the industry — Nigerian attires, bridal wear, and modern fashion.</p>
+            <p className="text-primary-600 font-medium text-sm uppercase tracking-wider mb-2">Gallery</p>
+            <h2 className="text-4xl font-bold mb-3">Designs & Styles</h2>
+            <p className="text-gray-600 text-lg max-w-xl">
+              Explore BeautyJay Luxe pieces. Every image is a style you can shop or sew.
+            </p>
           </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredCourses.map((course, index) => (
+
+          {allGalleryImages.length === 0 ? (
+            <div className="text-center text-gray-500 text-base">
+              Add your image details to <code>galleryImages</code> so they appear here.
+            </div>
+          ) : (
+            <>
               <motion.div
-                key={course.id}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6"
               >
-                <CourseCard course={course} />
+                {pageImages.map((image, index) => (
+                  <motion.div
+                    key={image.src}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: Math.min(index * 0.03, 0.25) }}
+                    className="group relative overflow-hidden rounded-xl bg-gray-200 cursor-pointer"
+                    onClick={() => setSelectedImage(image)}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.title || 'BeautyJay Luxe design'}
+                      className="w-full h-72 md:h-80 lg:h-96 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {(image.title || image.category) && (
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 text-white">
+                        {image.title && <p className="font-semibold text-base">{image.title}</p>}
+                        {image.category && (
+                          <p className="text-sm text-gray-200 mt-1">{image.category}</p>
+                        )}
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-10">
-            <Link to="/services/training" className="btn-primary">
-              View All Courses
-            </Link>
-          </div>
+
+              {/* Don't see your style CTA */}
+              <div className="mt-10 max-w-2xl mx-auto text-center bg-white border border-dashed border-primary-200 rounded-2xl px-6 py-6">
+                <p className="text-base md:text-lg text-gray-700 mb-3">
+                  Don&apos;t see your exact style here? You can still sew <span className="font-semibold">any</span> design you have saved from Instagram, Pinterest or your phone.
+                </p>
+                <Link
+                  to="/services/custom-sewing"
+                  className="inline-flex btn-secondary mt-1"
+                >
+                  Sew my own style
+                </Link>
+              </div>
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="mt-10 flex items-center justify-center gap-2 flex-wrap">
+                  <button
+                    type="button"
+                    className="btn-secondary px-4 py-2 rounded-lg text-sm font-medium"
+                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                    disabled={page === 1}
+                  >
+                    Prev
+                  </button>
+
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                    <button
+                      key={p}
+                      type="button"
+                      onClick={() => setPage(p)}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
+                        p === page
+                          ? 'bg-primary-600 border-primary-600 text-white'
+                          : 'bg-white border-gray-200 text-gray-700 hover:border-primary-200 hover:text-primary-600'
+                      }`}
+                    >
+                      {p}
+                    </button>
+                  ))}
+
+                  <button
+                    type="button"
+                    className="btn-secondary px-4 py-2 rounded-lg text-sm font-medium"
+                    onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                    disabled={page === totalPages}
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
+            </>
+          )}
         </div>
       </section>
+
+      {/* Gallery action modal */}
+      {selectedImage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 md:px-10 py-10 md:py-16">
+          <div className="bg-white rounded-3xl max-w-5xl w-full overflow-hidden shadow-2xl">
+            <div className="grid md:grid-cols-2 min-h-[620px]">
+              <div className="relative h-96 md:h-full bg-gray-100">
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.title || 'Selected style'}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6 md:p-8 flex flex-col">
+                <h3 className="text-2xl font-bold mb-2">
+                  {selectedImage.title || 'BeautyJay Luxe Style'}
+                </h3>
+                {selectedImage.category && (
+                  <p className="text-sm text-gray-500 mb-4">{selectedImage.category}</p>
+                )}
+                <p className="text-gray-600 mb-6">
+                  How would you like to get this look?
+                </p>
+                <div className="space-y-3">
+                  <button
+                    type="button"
+                    className="w-full btn-primary py-3"
+                    onClick={() => {
+                      openWhatsApp(
+                        `Hi BeautyJay Luxe, I would like to SHOP this look from your gallery: "${selectedImage.title ||
+                          'Unnamed style'}".`
+                      );
+                      setSelectedImage(null);
+                    }}
+                  >
+                    Shop this look
+                  </button>
+                  <button
+                    type="button"
+                    className="w-full btn-secondary py-3"
+                    onClick={() => {
+                      openWhatsApp(
+                        `Hi BeautyJay Luxe, I would like to SEW this style from your gallery: "${selectedImage.title ||
+                          'Unnamed style'}".`
+                      );
+                      setSelectedImage(null);
+                    }}
+                  >
+                    Sew this style
+                  </button>
+                  <button
+                    type="button"
+                    className="w-full text-sm text-gray-500 mt-2"
+                    onClick={() => setSelectedImage(null)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Testimonials */}
       <section className="section-padding bg-gray-50/30 border-t border-gray-200">
